@@ -1,5 +1,6 @@
 # prow-test
 
+Smple exemple of config/plugin base on those.
 * Look at this:
 
 https://aws.amazon.com/fr/blogs/opensource/how-falco-uses-prow-on-aws-for-open-source-testing/
