@@ -1,0 +1,25 @@
+triggers:
+- repos:
+  - vincentBaer
+  join_org_url: "https://github.com/vincentBaer/prow-test/blob/main/README.md"
+  only_org_members: true
+config_updater:
+  maps:
+    config/config.yaml:
+      name: config
+    config/plugins.yaml:
+      name: plugins
+    config/jobs/**/*.yaml:
+      name: job-config
+      gzip: true
+plugins:
+  vincentBaer/prow-test:
+    - approve
+    - lgtm
+    - skip
+    - size
+    - welcome
+    - owners-label
+    - label
+    - approve
+    - trigger
