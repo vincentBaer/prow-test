@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: rke2-ingress-nginx
+    meta.helm.sh/release-namespace: kube-system
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: rke2-ingress-nginx
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: rke2-ingress-nginx
+    app.kubernetes.io/part-of: rke2-ingress-nginx
+    app.kubernetes.io/version: 1.2.0
+    helm.sh/chart: rke2-ingress-nginx-4.1.003
+  name: rke2-ingress-nginx-controller-admission
+  namespace: kube-system
+spec:
+  ports:
+  - appProtocol: https
+    name: https
+    port: 443
+    protocol: TCP
+    targetPort: https
+  - appProtocol: http
+    name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: rke2-ingress-nginx
+    app.kubernetes.io/name: rke2-ingress-nginx
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - hostname: 89de18fb8dd041a3b94a740cccd5fd8c-037212463.eu-west-2.lbu.outscale.com
